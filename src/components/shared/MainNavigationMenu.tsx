@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 // ListItem component for navigation dropdowns
 const ListItem = React.forwardRef<
@@ -46,7 +47,9 @@ export function MainNavigationMenu() {
         {/* Left side: Logo and Navigation Menu */}
         <div className="flex items-center gap-6">
           {/* Logo */}
-          <div className="text-xl font-bold">Your Logo</div>
+          <Link href="/" className="text-xl font-bold text-black dark:text-white">
+            Your Logo
+          </Link>
 
           {/* Navigation Menu */}
           <NavigationMenu>

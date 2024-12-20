@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -31,16 +32,22 @@ const HeroSection = () => {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
-          <Button className="h-12 px-6 font-medium rounded-full" size="lg">
-            Find a Project to Join
-          </Button>
-          <Button className="h-12 px-6 font-medium rounded-full" size="lg">
-            Upload your Project Idea
-          </Button>
-          <Button variant="outline" className="h-12 px-6 font-medium rounded-full" size="lg">
-            <Github className="mr-2 h-4 w-4" />
-            GitHub
-          </Button>
+          <Link href="/projects">
+            <Button className="h-12 px-6 font-medium rounded-full" size="lg">
+              Find a Project to Join
+            </Button>
+          </Link>
+          <Link href="/projects/new">
+            <Button className="h-12 px-6 font-medium rounded-full" size="lg">
+              Upload your Project Idea
+            </Button>
+          </Link>
+          <Link href="https://github.com/khai-pi/co-oder" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" className="h-12 px-6 font-medium rounded-full" size="lg">
+              <Github className="mr-2 h-4 w-4" />
+              GitHub
+            </Button>
+          </Link>
         </div>
 
         {/* Background dots pattern */}
