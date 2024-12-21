@@ -1,4 +1,7 @@
-import React from 'react';
+import React from "react";
+import { Github, Heart, MessageSquare, Users } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,8 +19,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Github, Heart, MessageSquare, Users } from "lucide-react";
 
 // Sample project data
 const projects = [
@@ -31,7 +32,7 @@ const projects = [
     likes: 45,
     comments: 12,
     collaborators: 3,
-    status: "Active"
+    status: "Active",
   },
   {
     id: 2,
@@ -43,7 +44,7 @@ const projects = [
     likes: 89,
     comments: 34,
     collaborators: 5,
-    status: "Active"
+    status: "Active",
   },
   // Add more sample projects...
 ];
@@ -53,19 +54,16 @@ export default function ProjectsPage() {
     <div className="container mx-auto px-4 py-8">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Discover Projects</h1>
-        <p className="text-muted-foreground text-lg">
+        <h1 className="mb-2 text-4xl font-bold">Discover Projects</h1>
+        <p className="text-lg text-muted-foreground">
           Find exciting projects to collaborate on or share your own ideas
         </p>
       </div>
 
       {/* Search and Filter Section */}
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
+      <div className="mb-8 flex flex-col gap-4 md:flex-row">
         <div className="flex-1">
-          <Input 
-            placeholder="Search projects..." 
-            className="w-full"
-          />
+          <Input placeholder="Search projects..." className="w-full" />
         </div>
         <div className="flex gap-4">
           <Select defaultValue="all">
@@ -95,22 +93,26 @@ export default function ProjectsPage() {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <Card key={project.id} className="flex flex-col">
             <CardHeader>
-              <div className="flex justify-between items-start">
+              <div className="flex items-start justify-between">
                 <div>
                   <CardTitle className="mb-2">{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
                 </div>
-                <Badge variant={project.status === 'Active' ? 'default' : 'secondary'}>
+                <Badge
+                  variant={
+                    project.status === "Active" ? "default" : "secondary"
+                  }
+                >
                   {project.status}
                 </Badge>
               </div>
             </CardHeader>
             <CardContent className="flex-1">
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="mb-4 flex flex-wrap gap-2">
                 {project.skills.map((skill) => (
                   <Badge key={skill} variant="outline">
                     {skill}
@@ -124,20 +126,20 @@ export default function ProjectsPage() {
             <CardFooter className="flex justify-between border-t pt-4">
               <div className="flex gap-4">
                 <Button variant="ghost" size="sm" className="flex gap-1">
-                  <Heart className="w-4 h-4" />
+                  <Heart className="h-4 w-4" />
                   {project.likes}
                 </Button>
                 <Button variant="ghost" size="sm" className="flex gap-1">
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="h-4 w-4" />
                   {project.comments}
                 </Button>
                 <Button variant="ghost" size="sm" className="flex gap-1">
-                  <Users className="w-4 h-4" />
+                  <Users className="h-4 w-4" />
                   {project.collaborators}
                 </Button>
               </div>
               <Button variant="outline" size="sm">
-                <Github className="w-4 h-4 mr-2" />
+                <Github className="mr-2 h-4 w-4" />
                 View Project
               </Button>
             </CardFooter>
@@ -146,7 +148,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Add Project Button - Fixed */}
-      <Button 
+      <Button
         className="fixed bottom-8 right-8 rounded-full shadow-lg"
         size="lg"
       >
