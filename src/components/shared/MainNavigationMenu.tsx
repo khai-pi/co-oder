@@ -1,5 +1,9 @@
 // components/navigation/nav-menu.tsx
-import React from 'react';
+import React from "react";
+import Link from "next/link";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,9 +13,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 // ListItem component for navigation dropdowns
 const ListItem = React.forwardRef<
@@ -42,12 +43,15 @@ ListItem.displayName = "ListItem";
 
 export function MainNavigationMenu() {
   return (
-    <header className="border-b sticky top-0 bg-background z-50">
-      <div className="container mx-auto px-4 h-16 flex items-center">
+    <header className="sticky top-0 z-50 border-b bg-background">
+      <div className="container mx-auto flex h-16 items-center px-4">
         {/* Left side: Logo and Navigation Menu */}
         <div className="flex items-center gap-6">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-black dark:text-white">
+          <Link
+            href="/"
+            className="text-xl font-bold text-black dark:text-white"
+          >
             Your Logo
           </Link>
 
@@ -57,7 +61,7 @@ export function MainNavigationMenu() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid gap-3 p-4 w-[400px]">
+                  <ul className="grid w-[400px] gap-3 p-4">
                     <ListItem href="/docs" title="Introduction">
                       Get started building your next project.
                     </ListItem>
@@ -90,13 +94,9 @@ export function MainNavigationMenu() {
         </div>
 
         {/* Auth Buttons - pushed to the right */}
-        <div className="flex items-center gap-4 ml-auto">
-          <Button variant="outline">
-            Sign In
-          </Button>
-          <Button>
-            Get Started
-          </Button>
+        <div className="ml-auto flex items-center gap-4">
+          <Button variant="outline">Sign In</Button>
+          <Button>Get Started</Button>
         </div>
       </div>
     </header>
