@@ -31,7 +31,7 @@ export default function SignUp() {
     terms: false,
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -46,7 +46,7 @@ export default function SignUp() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
 
@@ -82,8 +82,6 @@ export default function SignUp() {
       email: formData.email,
       password: formData.password,
     };
-
-    console.log("Sending user data:", userData);
 
     try {
       const response = await fetch("/api/users", {

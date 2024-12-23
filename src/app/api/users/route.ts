@@ -15,7 +15,7 @@ export async function POST(request: Request) {
         {
           error: {
             code: "INVALID_INPUT",
-            message: e.message || "Invalid JSON in request body",
+            message: (e as Error).message || "Invalid JSON in request body",
           },
         },
         { status: 400 }
