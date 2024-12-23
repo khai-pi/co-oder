@@ -1,5 +1,5 @@
 // src/types/project.ts
-export type Project = {
+export interface Project {
   id: number;
   title: string;
   description: string;
@@ -12,4 +12,4 @@ export type Project = {
   comments: number;
   collaborators: number;
   status: "Active" | "Completed" | "Planning";
-};
+}
