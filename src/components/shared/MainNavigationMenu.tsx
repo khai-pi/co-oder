@@ -95,8 +95,12 @@ export function MainNavigationMenu() {
 
         {/* Auth Buttons - pushed to the right */}
         <div className="ml-auto flex items-center gap-4">
-          <Button variant="outline">Sign In</Button>
-          <Button>Get Started</Button>
+          <Button variant="outline" asChild>
+            <Link href="/sign-in">Sign In</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/sign-up">Get Started</Link>
+          </Button>
         </div>
       </div>
     </header>

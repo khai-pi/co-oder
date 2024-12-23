@@ -1,6 +1,6 @@
 // src/lib/services/projects.ts
 import { Project } from "@/types/project";
-import { prisma } from "@/lib/db";
+import { prisma } from "@/lib/prisma";
 
 export async function getProjects({
   category,
