@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 
 import type { UserInput } from "@/types/user";
-import { createUser } from "@/lib/services/auth/users/createUser";
+import { createUser } from "@/lib/services/users/createUser";
 
 export async function POST(request: Request) {
   try {

@@ -6,11 +6,11 @@ import { prisma } from "@/lib/prisma";
 import { validateUserInput } from "@/lib/utils/validation";
 
 export async function createUser(
-  input: UserInput
+  userInput: UserInput
 ): Promise<CreateUserResponse> {
   try {
     // Validate input
-    const validation = validateUserInput(input);
+    const validation = validateUserInput(userInput);
     if (!validation.isValid) {
       return {
         error: {
@@ -23,7 +23,7 @@ export async function createUser(
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
       where: {
-        email: input.email,
+        email: userInput.email,
       },
     });
 
@@ -37,13 +37,13 @@ export async function createUser(
     }
 
     // Hash password
-    const hashedPassword = await hash(input.password, 12);
+    const hashedPassword = await hash(userInput.password, 12);
 
     // Create user
     const user = await prisma.user.create({
       data: {
-        name: input.name,
-        email: input.email,
+        name: userInput.name,
+        email: userInput.email,
         password: hashedPassword,
       },
     });
