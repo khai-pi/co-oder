@@ -1,6 +1,9 @@
+"use client";
+
 // components/navigation/nav-menu.tsx
 import React from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/auth-context";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -42,6 +45,7 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 export function MainNavigationMenu() {
+  const { user, logout } = useAuth();
   return (
     <header className="sticky top-0 z-50 border-b bg-background">
       <div className="container mx-auto flex h-16 items-center px-4">
@@ -95,12 +99,50 @@ export function MainNavigationMenu() {
 
         {/* Auth Buttons - pushed to the right */}
         <div className="ml-auto flex items-center gap-4">
-          <Button variant="outline" asChild>
-            <Link href="/sign-in">Sign In</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/sign-up">Get Started</Link>
-          </Button>
+          {user ? (
+            <>
+              {/* Logged in state */}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>
+                      {/* Optional: Add user avatar here */}
+                      <span className="text-sm">{user.name}</span>
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[200px] gap-3 p-4">
+                        <ListItem href="/dashboard" title="Dashboard">
+                          View your dashboard
+                        </ListItem>
+                        <ListItem href="/settings" title="Settings">
+                          Manage your account
+                        </ListItem>
+                        <li>
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start"
+                            onClick={logout}
+                          >
+                            Sign Out
+                          </Button>
+                        </li>
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </>
+          ) : (
+            <>
+              {/* Logged out state */}
+              <Button variant="outline" asChild>
+                <Link href="/sign-in">Sign In</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/sign-up">Get Started</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>

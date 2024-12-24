@@ -1,7 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/auth-context";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,9 +18,43 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function SignIn() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add your sign in logic here
+    setError("");
+    setIsLoading(true);
+
+    try {
+      // Call the login function from auth context with email and password
+      await login(formData.email, formData.password);
+
+      // If login is successful, redirect to dashboard or home page
+      router.push("/");
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "An error occurred during sign in"
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -32,6 +68,9 @@ export default function SignIn() {
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
+            {error && (
+              <div className="text-sm font-medium text-red-500">{error}</div>
+            )}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -39,6 +78,9 @@ export default function SignIn() {
                 type="email"
                 placeholder="name@example.com"
                 required
+                value={formData.email}
+                onChange={handleInputChange}
+                disabled={isLoading}
               />
             </div>
             <div className="space-y-2">
@@ -56,12 +98,15 @@ export default function SignIn() {
                 type="password"
                 placeholder="Enter your password"
                 required
+                value={formData.password}
+                onChange={handleInputChange}
+                disabled={isLoading}
               />
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full">
-              Sign in
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Signing in..." : "Sign in"}
             </Button>
             <div className="text-center text-sm">
               {`Don't have an account? `}

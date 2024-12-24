@@ -1,6 +1,6 @@
 // src/__tests__/app/api/users/route.test.ts
 import { prisma } from "@/lib/prisma";
-import { POST } from "@/app/api/auth/route";
+import { POST } from "@/app/api/users/route";
 
 // Mock prisma
 jest.mock("@/lib/prisma", () => ({

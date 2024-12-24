@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/auth-context";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ import { Label } from "@/components/ui/label";
 
 export default function SignUp() {
   const router = useRouter();
+  const { signup } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -77,29 +79,17 @@ export default function SignUp() {
 
     setIsLoading(true);
 
-    const userData = {
+    const userInput = {
       name: `${formData.firstName} ${formData.lastName}`.trim(),
       email: formData.email,
       password: formData.password,
     };
 
     try {
-      const response = await fetch("/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error?.message || "Failed to create account");
-      }
+      await signup(userInput);
 
       // Successful registration
-      router.push("/sign-in?registered=true");
+      router.push("/");
     } catch (err: Error | unknown) {
       setError(
         err instanceof Error

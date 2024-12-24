@@ -2,7 +2,7 @@
 import { hash } from "bcryptjs";
 
 import { prisma } from "../src/lib/prisma";
-import { createUser } from "../src/lib/services/auth/createUser";
+import { createUser } from "../src/lib/services/users/createUser";
 import { UserInput } from "../src/types/user";
 
 // Mock prisma

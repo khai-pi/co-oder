@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import React from "react";
+import { AuthProvider } from "@/context/auth-context";
 
 import { MainNavigationMenu } from "@/components/shared/MainNavigationMenu";
 
@@ -32,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MainNavigationMenu />
-        {children}
+        <AuthProvider>
+          <MainNavigationMenu />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
