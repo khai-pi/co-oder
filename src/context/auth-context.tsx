@@ -6,8 +6,6 @@ import type { User } from "@prisma/client";
 
 import { UserInput } from "@/types/user";
 
-// import { setSessionTokenCookie } from '@/lib/services/auth/session/session';
-
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
@@ -80,7 +78,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const data = await response.json();
     setUser(data.user);
-    // setSessionTokenCookie(data.token, data.expiresAt);
   };
 
   return (

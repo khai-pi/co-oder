@@ -3,7 +3,11 @@ import { Session } from "@prisma/client";
 import { CreateUserResponse, User, UserInput } from "@/types/user";
 
 import { createUser } from "../../users/createUser";
-import { createSession, generateSessionToken } from "../session/session";
+import {
+  createSession,
+  generateSessionToken,
+  setSessionTokenCookie,
+} from "../session/session";
 
 interface SignUpResponse {
   token: string;
@@ -22,6 +26,8 @@ export async function signUp(userInput: UserInput): Promise<SignUpResponse> {
       token,
       createUserResponse.user?.id as number
     );
+
+    setSessionTokenCookie(token, session.expiresAt);
 
     return { token, user: createUserResponse.user as User, session };
   } catch (error) {
