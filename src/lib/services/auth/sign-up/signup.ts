@@ -6,7 +6,7 @@ import { createUser } from "../../users/createUser";
 import {
   createSession,
   generateSessionToken,
-  setSessionTokenCookie,
+  // setSessionTokenCookie,
 } from "../session/session";
 
 interface SignUpResponse {
@@ -27,7 +27,7 @@ export async function signUp(userInput: UserInput): Promise<SignUpResponse> {
       createUserResponse.user?.id as number
     );
 
-    setSessionTokenCookie(token, session.expiresAt);
+    // setSessionTokenCookie(token, session.expiresAt);
 
     return { token, user: createUserResponse.user as User, session };
   } catch (error) {
