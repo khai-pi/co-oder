@@ -74,10 +74,15 @@ export type SessionValidationResult =
   | { session: Session; user: User }
   | { session: null; user: null };
 
+// It seems to have problems with the cookies set
+// https://github.com/vercel/next.js/issues/70068
 export async function setSessionTokenCookie(
   token: string,
   expiresAt: Date
 ): Promise<void> {
+  // console.log("Setting cookie with token:", token); // Debug log
+  // console.log("Cookie expiry:", expiresAt); // Debug log
+
   const cookieStore = await cookies();
   cookieStore.set("session", token, {
     httpOnly: true,
@@ -86,6 +91,8 @@ export async function setSessionTokenCookie(
     expires: expiresAt,
     path: "/",
   });
+
+  // console.log("Cookie set complete"); // Debug log
 }
 
 export async function deleteSessionTokenCookie(): Promise<void> {

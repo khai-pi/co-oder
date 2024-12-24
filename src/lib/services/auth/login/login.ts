@@ -7,7 +7,7 @@ import { prisma } from "@/lib/prisma";
 import {
   createSession,
   generateSessionToken,
-  setSessionTokenCookie,
+  // setSessionTokenCookie,
 } from "../session/session";
 
 interface LoginResponse {
@@ -41,7 +41,7 @@ export async function login(
 
     const session = await createSession(token, user.id);
 
-    setSessionTokenCookie(token, session.expiresAt);
+    // setSessionTokenCookie(token, session.expiresAt);
 
     return { token, user, session };
   } catch (error) {

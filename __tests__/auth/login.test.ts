@@ -67,10 +67,6 @@ describe("login", () => {
       mockToken,
       mockUserId
     );
-    expect(sessionModule.setSessionTokenCookie).toHaveBeenCalledWith(
-      mockToken,
-      mockExpiresAt
-    );
 
     expect(result).toEqual({
       token: mockToken,

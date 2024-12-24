@@ -8,11 +8,22 @@ export async function POST(request: NextRequest) {
     const userInput = await request.json();
 
     const { user, token, session } = await signUp(userInput);
-    return NextResponse.json({
+
+    const response = NextResponse.json({
       user,
       token,
       expiresAt: session.expiresAt,
     });
+
+    response.cookies.set("session", token, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      expires: session.expiresAt,
+      path: "/",
+    });
+
+    return response;
   } catch (error) {
     console.error("Registration failed:", error);
     return NextResponse.json(
