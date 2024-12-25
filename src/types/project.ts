@@ -5,11 +5,15 @@ export interface Project {
   description: string;
   category: string;
   skills: string[];
-  owner: {
-    name: string;
-  };
+  status: string;
   likes: number;
   comments: number;
   collaborators: number;
-  status: "Active" | "Completed" | "Planning";
+  createdAt: Date;
+  updatedAt: Date;
+  ownerId: number;
+  owner: {
+    id: number;
+    name: string;
+  };
 }

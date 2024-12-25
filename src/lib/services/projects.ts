@@ -1,4 +1,5 @@
-// src/lib/services/projects.ts
+import { Prisma } from "@prisma/client";
+
 import { Project } from "@/types/project";
 import { prisma } from "@/lib/prisma";
 
@@ -12,56 +13,34 @@ export async function getProjects({
   status?: string;
 } = {}): Promise<Project[]> {
   try {
-    const where = {
+    const where: Prisma.ProjectWhereInput = {
       AND: [
-        category ? { category } : {},
-        status ? { status } : {},
-        search
-          ? {
-              OR: [
-                { title: { contains: search, mode: "insensitive" } },
-                { description: { contains: search, mode: "insensitive" } },
-              ],
-            }
-          : {},
+        ...(category ? [{ category }] : []),
+        ...(status ? [{ status }] : []),
+        ...(search
+          ? [
+              {
+                OR: [
+                  {
+                    title: {
+                      contains: search,
+                      mode: "insensitive",
+                    } as Prisma.StringFilter,
+                  },
+                  {
+                    description: {
+                      contains: search,
+                      mode: "insensitive",
+                    } as Prisma.StringFilter,
+                  },
+                ],
+              },
+            ]
+          : []),
       ],
     };
 
-    // const dbProjects = await prisma.project.findMany({
-    //   where,
-    //   orderBy: { createdAt: "desc" },
-    //   select: {
-    //     id: true,
-    //     title: true,
-    //     description: true,
-    //     category: true,
-    //     skills: true,
-    //     status: true,
-    //     likes: true,
-    //     comments: true,
-    //     collaborators: true,
-    //     owner: {
-    //       select: {
-    //         name: true,
-    //       },
-    //     },
-    //   },
-    // });
-
-    // // Transform the data to match our Project type
-    // const projects: Project[] = dbProjects.map((project: Project) => ({
-    //   id: project.id,
-    //   title: project.title,
-    //   description: project.description,
-    //   category: project.category,
-    //   skills: project.skills,
-    //   owner: project.owner.name, // Convert owner object to string
-    //   likes: project.likes,
-    //   comments: project.comments,
-    //   collaborators: project.collaborators,
-    //   status: project.status as "Active" | "Completed" | "Planning",
-    // }));
-    const projects = await prisma.project.findMany({
+    const projects = (await prisma.project.findMany({
       where,
       orderBy: { createdAt: "desc" },
       include: {
@@ -72,7 +51,7 @@ export async function getProjects({
           },
         },
       },
-    });
+    })) as Project[];
 
     return projects;
   } catch (error) {
