@@ -56,7 +56,7 @@ export function MainNavigationMenu() {
             href="/"
             className="text-xl font-bold text-black dark:text-white"
           >
-            Your Logo
+            Co-oder
           </Link>
 
           {/* Navigation Menu */}
