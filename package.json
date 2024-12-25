@@ -11,7 +11,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md,js,jsx,json}\"",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
