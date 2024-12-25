@@ -1,6 +1,6 @@
-import { Session } from "@prisma/client";
+import { Session, User } from "@prisma/client";
 
-import { User, UserInput } from "@/types/user";
+import { UserInput } from "@/types/user";
 import {
   createSession,
   generateSessionToken,

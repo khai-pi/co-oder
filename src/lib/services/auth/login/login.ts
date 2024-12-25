@@ -1,7 +1,6 @@
-import { Session } from "@prisma/client";
+import { Session, User } from "@prisma/client";
 import { compare } from "bcryptjs";
 
-import { User } from "@/types/user";
 import { prisma } from "@/lib/prisma";
 
 import {

@@ -1,4 +1,5 @@
-import { Project } from "./project";
+// import { Project } from "./project";
+import { User } from "@prisma/client";
 
 export interface UserInput {
   email: string;
@@ -6,12 +7,12 @@ export interface UserInput {
   name: string;
 }
 
-export interface User extends UserInput {
-  id: number;
-  projects?: Project[];
-  createdAt: Date;
-  updatedAt: Date;
-}
+// export interface User extends UserInput {
+//   id: number;
+//   projects?: Project[];
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
 
 export interface CreateUserResponse {
   user?: User;

@@ -3,7 +3,7 @@
 // src/components/projects/ProjectCard.tsx
 import { Github, Heart, MessageSquare, Users } from "lucide-react";
 
-import type { Project } from "@/types/project";
+import { Project } from "@/types/project";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {

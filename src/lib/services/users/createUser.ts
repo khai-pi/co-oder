@@ -1,7 +1,8 @@
 // src/lib/services/users/createUser.ts
+import { User } from "@prisma/client";
 import { hash } from "bcryptjs";
 
-import type { CreateUserResponse, User, UserInput } from "@/types/user";
+import type { CreateUserResponse, UserInput } from "@/types/user";
 import { prisma } from "@/lib/prisma";
 import { validateUserInput } from "@/lib/utils/validation";
 

@@ -1,4 +1,5 @@
 // src/types/project.ts
+// TODO: https://github.com/prisma/prisma/discussions/10928
 export interface Project {
   id: number;
   title: string;
