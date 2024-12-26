@@ -5,16 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface Params {
-  id: string; // Next.js route params are always strings
-}
+type Params = Promise<{ id: string }>;
 
-interface PageProps {
-  params: Params;
-}
-
-export default async function ProjectPage({ params }: PageProps) {
-  const id = parseInt(params.id, 10); // Convert string to number
+export default async function ProjectPage({ params }: { params: Params }) {
+  const { id } = await params;
   const project = await getProject(id);
 
   if (!project) {
