@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import ProjectsGrid from "@/components/projects/ProjectsGrid";
@@ -12,12 +13,14 @@ export default function ProjectsPage() {
       <SearchAndFilterSection />
       <ProjectsGrid />
       {/* Add Project Button - Fixed */}
-      <Button
-        className="fixed bottom-8 right-8 rounded-full shadow-lg"
-        size="lg"
-      >
-        Upload Project
-      </Button>
+      <Link href="/projects/create-project">
+        <Button
+          className="fixed bottom-8 right-8 rounded-full shadow-lg"
+          size="lg"
+        >
+          Upload Idea
+        </Button>
+      </Link>
     </div>
   );
 }

@@ -3,6 +3,16 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest): Promise<NextResponse> {
+  // Check if the request is for projects/create-project
+  if (request.nextUrl.pathname === "/projects/create-project") {
+    const token = request.cookies.get("session")?.value ?? null;
+
+    // If no token is present, redirect to sign-in page
+    if (!token) {
+      return NextResponse.redirect(new URL("/sign-in", request.url));
+    }
+  }
+
   if (request.method === "GET") {
     const response = NextResponse.next();
     const token = request.cookies.get("session")?.value ?? null;

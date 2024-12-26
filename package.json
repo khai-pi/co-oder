@@ -12,7 +12,8 @@
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "test": "jest",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
