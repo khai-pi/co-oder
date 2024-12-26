@@ -39,7 +39,7 @@ const HeroSection = () => {
               Find a Project to Join
             </Button>
           </Link>
-          <Link href="/projects/new">
+          <Link href="/projects/create-project">
             <Button className="h-12 rounded-full px-6 font-medium" size="lg">
               Upload your Project Idea
             </Button>

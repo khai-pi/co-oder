@@ -1,7 +1,8 @@
 "use client";
 
 // src/components/projects/ProjectCard.tsx
-import { Github, Heart, MessageSquare, Users } from "lucide-react";
+import Link from "next/link";
+import { Heart, MessageSquare, Users } from "lucide-react";
 
 import { Project } from "@/types/project";
 import { Badge } from "@/components/ui/badge";
@@ -62,10 +63,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.collaborators}
           </Button>
         </div>
-        <Button variant="outline" size="sm">
-          <Github className="mr-2 h-4 w-4" />
-          View Project
-        </Button>
+        <Link href={`/projects/${project.id}`}>
+          <Button variant="outline" size="sm">
+            View Project
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );

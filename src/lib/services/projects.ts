@@ -59,3 +59,26 @@ export async function getProjects({
     throw new Error("Failed to fetch projects");
   }
 }
+
+export async function getProject(id: string | number): Promise<Project | null> {
+  try {
+    const projectId = typeof id === "string" ? parseInt(id, 10) : id;
+
+    const project = await prisma.project.findUnique({
+      where: { id: projectId },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+
+    return project;
+  } catch (error) {
+    console.error("Error fetching project:", error);
+    throw new Error("Failed to fetch project");
+  }
+}
