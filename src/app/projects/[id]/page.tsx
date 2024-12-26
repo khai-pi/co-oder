@@ -6,12 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Params {
-  id: number;
+  id: string; // Next.js route params are always strings
 }
 
-export default async function ProjectPage({ params }: { params: Params }) {
-  const { id } = await params;
+interface PageProps {
+  params: Params;
+}
+
+export default async function ProjectPage({ params }: PageProps) {
+  const id = parseInt(params.id, 10); // Convert string to number
   const project = await getProject(id);
+
   if (!project) {
     return <div>Project not found</div>;
   }
