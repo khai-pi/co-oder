@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
               </div>
 
               <div className="flex items-center text-sm text-gray-500">
-                <span>Created by {project.owner.name}</span>
+                <span>Created by {project.owner.username}</span>
                 <span className="mx-2">•</span>
                 <span>{new Date(project.createdAt).toLocaleDateString()}</span>
               </div>

@@ -107,7 +107,7 @@ export function MainNavigationMenu() {
                   <NavigationMenuItem>
                     <NavigationMenuTrigger>
                       {/* Optional: Add user avatar here */}
-                      <span className="text-sm">{user.name}</span>
+                      <span className="text-sm">{user.username}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[200px] gap-3 p-4">

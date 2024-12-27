@@ -21,7 +21,7 @@ export async function GET() {
         authenticated: true,
         user: {
           id: user.id,
-          name: user.name,
+          username: user.username,
           email: user.email,
         },
         session: {

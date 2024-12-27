@@ -23,7 +23,7 @@ describe("POST /api/users", () => {
   });
 
   const validUserData = {
-    name: "Test User",
+    username: "Test User",
     email: "test@example.com",
     password: "password123",
   };

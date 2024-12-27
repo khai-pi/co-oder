@@ -28,7 +28,7 @@ describe("createUser", () => {
   const validUserInput: UserInput = {
     email: "test@example.com",
     password: "password123",
-    name: "Test User",
+    username: "Test User",
   };
 
   it("should create a new user successfully", async () => {
@@ -39,7 +39,7 @@ describe("createUser", () => {
       id: 1,
       email: validUserInput.email,
       password: "hashedPassword123",
-      name: validUserInput.name,
+      username: validUserInput.username,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -53,7 +53,7 @@ describe("createUser", () => {
     expect(result.user).toBeDefined();
     expect(result.user?.password).toBeUndefined(); // Password should be removed
     expect(result.user?.email).toBe(validUserInput.email);
-    expect(result.user?.name).toBe(validUserInput.name);
+    expect(result.user?.username).toBe(validUserInput.username);
 
     // Verify prisma calls
     expect(prisma.user.findUnique).toHaveBeenCalledWith({
@@ -63,7 +63,7 @@ describe("createUser", () => {
     expect(prisma.user.create).toHaveBeenCalledWith({
       data: expect.objectContaining({
         email: validUserInput.email,
-        name: validUserInput.name,
+        username: validUserInput.username,
         password: "hashedPassword123",
       }),
     });

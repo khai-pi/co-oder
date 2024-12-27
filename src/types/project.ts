@@ -15,6 +15,6 @@ export interface Project {
   ownerId: number;
   owner: {
     id: number;
-    name: string;
+    username: string;
   };
 }

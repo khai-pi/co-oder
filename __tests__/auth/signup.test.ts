@@ -28,13 +28,13 @@ describe("signUp", () => {
   const mockUserInput: UserInput = {
     email: "test@example.com",
     password: "password123",
-    name: "Test User",
+    username: "Test User",
   };
 
   const mockUser: User = {
     id: 1,
     email: "test@example.com",
-    name: "Test User",
+    username: "Test User",
     password: "",
     createdAt: new Date(),
     updatedAt: new Date(),

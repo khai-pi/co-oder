@@ -47,7 +47,7 @@ export async function getProjects({
         owner: {
           select: {
             id: true,
-            name: true,
+            username: true,
           },
         },
       },
@@ -70,7 +70,7 @@ export async function getProject(id: string | number): Promise<Project | null> {
         owner: {
           select: {
             id: true,
-            name: true,
+            username: true,
           },
         },
       },

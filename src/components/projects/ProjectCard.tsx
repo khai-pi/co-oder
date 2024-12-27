@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
         <div className="text-sm text-muted-foreground">
-          Created by {project.owner.name}
+          Created by {project.owner.username}
         </div>
       </CardContent>
       <CardFooter className="flex justify-between border-t pt-4">
