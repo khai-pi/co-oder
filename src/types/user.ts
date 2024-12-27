@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 export interface UserInput {
   email: string;
   password: string;
-  name: string;
+  username: string;
 }
 
 // export interface User extends UserInput {

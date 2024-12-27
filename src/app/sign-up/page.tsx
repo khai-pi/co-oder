@@ -25,8 +25,7 @@ export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -52,8 +51,8 @@ export default function SignUp() {
     e.preventDefault();
     setError("");
 
-    if (!formData.firstName.trim() || !formData.lastName.trim()) {
-      setError("First name and last name are required");
+    if (!formData.username.trim()) {
+      setError("Username is required");
       return;
     }
 
@@ -80,7 +79,7 @@ export default function SignUp() {
     setIsLoading(true);
 
     const userInput = {
-      name: `${formData.firstName} ${formData.lastName}`.trim(),
+      name: formData.username.trim(),
       email: formData.email,
       password: formData.password,
     };
@@ -121,29 +120,16 @@ export default function SignUp() {
         )}
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName">First Name</Label>
-                <Input
-                  id="firstName"
-                  placeholder="John"
-                  required
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  disabled={isLoading}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName">Last Name</Label>
-                <Input
-                  id="lastName"
-                  placeholder="Doe"
-                  required
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  disabled={isLoading}
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <Input
+                id="username"
+                placeholder="Awesome User"
+                required
+                value={formData.username}
+                onChange={handleChange}
+                disabled={isLoading}
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>

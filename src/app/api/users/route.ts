@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     // Validate required fields
-    if (!body?.name || !body?.email || !body?.password) {
+    if (!body?.username || !body?.email || !body?.password) {
       return NextResponse.json(
         {
           error: {
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
     // Extract user input
     const userInput: UserInput = {
-      name: body.name,
+      username: body.username,
       email: body.email,
       password: body.password,
     };

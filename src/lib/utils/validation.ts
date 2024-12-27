@@ -14,7 +14,7 @@ export const validateUserInput = (
     };
   }
 
-  if (!input.name || input.name.trim().length < 2) {
+  if (!input.username || input.username.trim().length < 2) {
     return { isValid: false, error: "Name must be at least 2 characters long" };
   }
 

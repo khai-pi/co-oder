@@ -37,13 +37,28 @@ export async function createUser(
       };
     }
 
+    // Check if username already exists
+    const existingUsername = await prisma.user.findUnique({
+      where: {
+        username: userInput.username,
+      },
+    });
+    if (existingUsername) {
+      return {
+        error: {
+          code: "USERNAME_EXISTS",
+          message: "User with this username already exists",
+        },
+      };
+    }
+
     // Hash password
     const hashedPassword = await hash(userInput.password, 12);
 
     // Create user
     const user = await prisma.user.create({
       data: {
-        name: userInput.name,
+        username: userInput.username,
         email: userInput.email,
         password: hashedPassword,
       },
