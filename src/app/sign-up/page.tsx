@@ -79,7 +79,7 @@ export default function SignUp() {
     setIsLoading(true);
 
     const userInput = {
-      name: formData.username.trim(),
+      username: formData.username.trim(),
       email: formData.email,
       password: formData.password,
     };
