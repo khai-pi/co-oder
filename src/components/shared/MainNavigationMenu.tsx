@@ -111,7 +111,7 @@ export function MainNavigationMenu() {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[200px] gap-3 p-4">
-                        <ListItem href="/dashboard" title="Dashboard">
+                        <ListItem href={`/users/${user.id}`} title="Dashboard">
                           View your dashboard
                         </ListItem>
                         <ListItem href="/settings" title="Settings">

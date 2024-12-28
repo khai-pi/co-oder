@@ -7,14 +7,17 @@ export async function getProjects({
   category,
   search,
   status,
+  userId,
 }: {
   category?: string;
   search?: string;
   status?: string;
+  userId?: number;
 } = {}): Promise<Project[]> {
   try {
     const where: Prisma.ProjectWhereInput = {
       AND: [
+        ...(userId ? [{ ownerId: userId }] : []),
         ...(category ? [{ category }] : []),
         ...(status ? [{ status }] : []),
         ...(search
