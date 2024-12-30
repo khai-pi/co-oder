@@ -13,7 +13,8 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "postinstall": "prisma generate",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "cypress:open": "cypress open"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -57,11 +58,13 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@testing-library/cypress": "^10.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "cypress": "^13.17.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "husky": "^9.1.7",
