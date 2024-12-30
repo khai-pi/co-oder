@@ -63,35 +63,31 @@ export function MainNavigationMenu() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4">
-                    <ListItem href="/docs" title="Introduction">
-                      Get started building your next project.
-                    </ListItem>
-                    <ListItem href="/docs/installation" title="Installation">
-                      How to install and setup your development environment.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
+                <NavigationMenuLink
+                  href="/projects"
+                  className={navigationMenuTriggerStyle()}
+                >
+                  All projects
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+                <NavigationMenuTrigger>Features Projects</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                    <ListItem href="/features/analytics" title="Analytics">
-                      Detailed insights and data visualization.
+                    <ListItem
+                      href="/features/active-projects"
+                      title="Active Projects"
+                    >
+                      Projects actively looking for collaborators.
                     </ListItem>
-                    <ListItem href="/features/automation" title="Automation">
-                      Streamline your workflow with powerful automation.
+                    <ListItem
+                      href="/features/done-projects"
+                      title="Completed Projects"
+                    >
+                      Projects that have been completed.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Pricing
-                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
