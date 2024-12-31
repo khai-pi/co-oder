@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="dev-gradient" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dbeafe"/>
+      <stop offset="50%" style="stop-color:#e0f2fe"/>
+      <stop offset="100%" style="stop-color:#fafafa"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#dev-gradient)"/>
+  
+  <!-- Central Code Window -->
+  <g transform="translate(150,75)">
+    <!-- Window -->
+    <rect x="0" y="0" width="300" height="300" rx="16" fill="white" stroke="#bae6fd" stroke-width="2"/>
+    
+    <!-- Title Bar -->
+    <rect x="0" y="0" width="300" height="40" rx="16" fill="#0ea5e9"/>
+    <circle cx="25" cy="20" r="6" fill="#fecaca"/>
+    <circle cx="50" cy="20" r="6" fill="#fef08a"/>
+    <circle cx="75" cy="20" r="6" fill="#86efac"/>
+    
+    <!-- Code Lines -->
+    <g fill="#0ea5e9" opacity="0.3">
+      <rect x="20" y="60" width="200" height="10" rx="5"/>
+      <rect x="20" y="90" width="150" height="10" rx="5"/>
+      <rect x="20" y="120" width="180" height="10" rx="5"/>
+      <rect x="20" y="150" width="140" height="10" rx="5"/>
+      <rect x="20" y="180" width="160" height="10" rx="5"/>
+      <rect x="20" y="210" width="130" height="10" rx="5"/>
+    </g>
+  </g>
+  
+  <!-- Code Symbols -->
+  <g fill="#0ea5e9" opacity="0.4" font-family="monospace" font-size="32">
+    <text x="100" y="50">{}</text>
+    <text x="500" y="150">()</text>
+    <text x="100" y="400">[]</text>
+    <text x="480" y="350">&lt;/&gt;</text>
+  </g>
+</svg>
