@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7"/>
+      <stop offset="50%" style="stop-color:#fef9c3"/>
+      <stop offset="100%" style="stop-color:#fafafa"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg-gradient)"/>
+  
+  <!-- Central Lightbulb -->
+  <g transform="translate(300,225)">
+    <!-- Bulb -->
+    <path d="M0,-80 C40,-80 70,-40 70,0 C70,25 60,40 50,55 L-50,55 C-60,40 -70,25 -70,0 C-70,-40 -40,-80 0,-80" 
+          fill="#f59e0b"/>
+    <!-- Base -->
+    <rect x="-30" y="55" width="60" height="15" fill="#d97706"/>
+    <path d="M-30,70 L30,70 L25,80 L-25,80 Z" fill="#b45309"/>
+    
+    <!-- Light rays -->
+    <g stroke="#fbbf24" stroke-width="3" opacity="0.6">
+      <line x1="-90" y1="-40" x2="-120" y2="-60" />
+      <line x1="90" y1="-40" x2="120" y2="-60" />
+      <line x1="0" y1="-100" x2="0" y2="-130" />
+      <line x1="-90" y1="40" x2="-120" y2="60" />
+      <line x1="90" y1="40" x2="120" y2="60" />
+    </g>
+  </g>
+  
+  <!-- Floating Elements -->
+  <g>
+    <!-- Small idea circles -->
+    <circle cx="150" cy="150" r="25" fill="#fcd34d" opacity="0.4"/>
+    <circle cx="450" cy="150" r="30" fill="#fcd34d" opacity="0.4"/>
+    <circle cx="150" cy="350" r="20" fill="#fcd34d" opacity="0.4"/>
+    <circle cx="450" cy="350" r="25" fill="#fcd34d" opacity="0.4"/>
+  </g>
+</svg>
