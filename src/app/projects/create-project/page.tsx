@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -136,7 +137,9 @@ export default function CreateProject() {
             </div>
 
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating..." : "Share your idea and find collaborators"}
+              {loading
+                ? "Creating..."
+                : "Share your idea and find collaborators"}
             </Button>
           </form>
         </CardContent>
