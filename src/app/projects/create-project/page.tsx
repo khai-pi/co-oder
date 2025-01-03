@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
 import { useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,7 +19,7 @@ export default function CreateProject() {
     description: "",
     category: "",
     skills: "",
-    status: "OPEN",
+    status: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -39,7 +38,6 @@ export default function CreateProject() {
       });
 
       if (!response.ok) throw new Error("Failed to create project");
-      // Redirect to projects page or show success message
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -58,7 +56,7 @@ export default function CreateProject() {
     <div className="mx-auto max-w-2xl p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Create New Project</CardTitle>
+          <CardTitle>Share yours ideas</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -93,7 +91,7 @@ export default function CreateProject() {
                 }
                 required
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -126,7 +124,7 @@ export default function CreateProject() {
                 }
                 required
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -138,7 +136,7 @@ export default function CreateProject() {
             </div>
 
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating..." : "Create Project"}
+              {loading ? "Creating..." : "Share your idea and find collaborators"}
             </Button>
           </form>
         </CardContent>
