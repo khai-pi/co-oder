@@ -45,6 +45,31 @@ const UserProfileSettings = () => {
     setSuccessMessage("");
   };
 
+  const changePassword = async (data: {
+    currentPassword: string;
+    newPassword: string;
+  }) => {
+    const response = await fetch("/api/user/change-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      // Handle different HTTP error codes
+      switch (response.status) {
+        case 400:
+          throw new Error((await response.json()).error);
+        default:
+          throw new Error("Failed to change password. Please try again");
+      }
+    }
+
+    return response.json();
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors({});
@@ -72,15 +97,21 @@ const UserProfileSettings = () => {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      setSuccessMessage("Password changed successfully!");
-      setPasswords({
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: "",
+      const result = await changePassword({
+        currentPassword: passwords.currentPassword,
+        newPassword: passwords.newPassword,
       });
+
+      if (result.success) {
+        setSuccessMessage(result.message || "Password changed successfully!");
+        setPasswords({
+          currentPassword: "",
+          newPassword: "",
+          confirmPassword: "",
+        });
+      } else {
+        setErrors({ submit: result.message });
+      }
     } catch (err: unknown) {
       setErrors({
         submit:
