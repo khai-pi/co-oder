@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Lock } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import React, { useState } from "react";
+import { Lock } from "lucide-react";
+
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface PasswordState {
   currentPassword: string;
@@ -23,44 +24,44 @@ interface ErrorState {
 
 const UserProfileSettings = () => {
   const [passwords, setPasswords] = useState<PasswordState>({
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: ''
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState<ErrorState>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setPasswords(prev => ({
+    setPasswords((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    setErrors(prev => ({
+    setErrors((prev) => ({
       ...prev,
-      [name]: ''
+      [name]: "",
     }));
-    setSuccessMessage('');
+    setSuccessMessage("");
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors({});
-    setSuccessMessage('');
-    let newErrors: ErrorState = {};
+    setSuccessMessage("");
+    const newErrors: ErrorState = {};
 
     // Basic validations
     if (!passwords.currentPassword) {
-      newErrors.currentPassword = 'Current password is required';
+      newErrors.currentPassword = "Current password is required";
     }
 
     if (!passwords.newPassword) {
-      newErrors.newPassword = 'New password is required';
+      newErrors.newPassword = "New password is required";
     }
 
     if (passwords.newPassword !== passwords.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = "Passwords do not match";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -72,17 +73,20 @@ const UserProfileSettings = () => {
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      setSuccessMessage('Password changed successfully!');
+      setSuccessMessage("Password changed successfully!");
       setPasswords({
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: ''
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
       });
     } catch (err: unknown) {
       setErrors({
-        submit: err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.'
+        submit:
+          err instanceof Error
+            ? err.message
+            : "An unexpected error occurred. Please try again.",
       });
     } finally {
       setIsLoading(false);
@@ -90,7 +94,7 @@ const UserProfileSettings = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="mx-auto max-w-4xl space-y-6 p-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -168,19 +172,19 @@ const UserProfileSettings = () => {
                 variant="outline"
                 onClick={() => {
                   setPasswords({
-                    currentPassword: '',
-                    newPassword: '',
-                    confirmPassword: ''
+                    currentPassword: "",
+                    newPassword: "",
+                    confirmPassword: "",
                   });
                   setErrors({});
-                  setSuccessMessage('');
+                  setSuccessMessage("");
                 }}
                 disabled={isLoading}
               >
                 Cancel
               </Button>
               <Button type="submit" disabled={isLoading}>
-                {isLoading ? 'Changing Password...' : 'Change Password'}
+                {isLoading ? "Changing Password..." : "Change Password"}
               </Button>
             </div>
           </CardContent>
