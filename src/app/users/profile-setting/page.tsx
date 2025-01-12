@@ -49,7 +49,7 @@ const UserProfileSettings = () => {
     currentPassword: string;
     newPassword: string;
   }) => {
-    const response = await fetch("/api/user/change-password", {
+    const response = await fetch("/api/users/change-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

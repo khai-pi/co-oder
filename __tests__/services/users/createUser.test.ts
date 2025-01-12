@@ -1,12 +1,12 @@
 // /__tests__/createUser.test.ts
 import { hash } from "bcryptjs";
 
-import { prisma } from "../src/lib/prisma";
-import { createUser } from "../src/lib/services/users/createUser";
-import { UserInput } from "../src/types/user";
+import { UserInput } from "@/types/user";
+import { prisma } from "@/lib/prisma";
+import { createUser } from "@/lib/services/users/createUser";
 
 // Mock prisma
-jest.mock("../src/lib/prisma", () => ({
+jest.mock("@/lib/prisma", () => ({
   prisma: {
     user: {
       findUnique: jest.fn(),
