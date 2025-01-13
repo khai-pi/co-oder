@@ -110,7 +110,10 @@ export function MainNavigationMenu() {
                         <ListItem href={`/users/${user.id}`} title="Dashboard">
                           View your dashboard
                         </ListItem>
-                        <ListItem href="/settings" title="Settings">
+                        <ListItem
+                          href="/users/profile-setting"
+                          title="Settings"
+                        >
                           Manage your account
                         </ListItem>
                         <li>
